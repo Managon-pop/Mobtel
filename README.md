@@ -1,2 +1,2 @@
 # Mobtel
-Tap mob and Teleport!
+Mobをタップするとワールド移動ができます!!
