@@ -18,7 +18,7 @@ use pocketmine\math\Vector3;
 class Mobtel extends PluginBase implements Listener{
   private $mobnum = 0;
   function onEnable(){
-    $this->getLogger()->info("§2Mobtelを読み込みました§bBy Managon");
+    $this->getLogger()->info("§2Mobtel　Loaded!!  §bBy Managon");
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
 	if(!file_exists($this->getDataFolder())){
           @mkdir($this->getDataFolder(),0774,true);
@@ -29,18 +29,18 @@ class Mobtel extends PluginBase implements Listener{
     switch (strtolower($command->getName())){
 		      case "tel":
 			  if(!isset($args[0])){
-			  $sender->sendMessage("§2使い方 /tel [world名]");
+			  $sender->sendMessage("§2Usage: /tel [worldname]");
 	        }else{
 			  $w_name = $args[0];
 			    if(Server::getInstance()->loadLevel($w_name) !==False){
 				   $this->c->set($this->mobnum,[$w_name, $sender->getName(), "off"]);
 				   $this->c->set($sender->getName(),$this->mobnum);
 				   $this->c->save();
-				   $sender->sendMessage("§bMobをタップすると完了です!!");
+				   $sender->sendMessage("§bTap mob and finish!!");
 				   return $this->mobnum++;
 			    }
 				else{
-				   $sender->sendMessage("§aそのワールドは存在しません");
+				   $sender->sendMessage("§aI didn't find the world...");
 				   return;
 			  }
 			}
@@ -64,7 +64,7 @@ class Mobtel extends PluginBase implements Listener{
 				$this->c->set($this->c->get($name),[$world, $name, "on", $x, $y, $z]);
 				$this->c->set($mix, $world);
 				$this->c->save(); 
-				$p->sendMessage("§d完成しました!!");
+				$p->sendMessage("§dDone!!");
 				$e->setCancelled();
 	   }else{
 	                  $mob = $e->getEntity();
@@ -73,7 +73,7 @@ class Mobtel extends PluginBase implements Listener{
 				      $z = ceil($mob->getZ());
 				      $mix = $x + $y + $z;
 					  if($this->c->exists($mix)){
-					     $p->sendMessage("§bテレポートしています…");
+					     $p->sendMessage("§bTeleporting...");
 						 Server::getInstance()->loadLevel($this->c->get($mix));
 					     $p->teleport(Server::getInstance()->getLevelByName($this->c->get($mix))->getSpawnLocation());
 						 $e->setCancelled();
