@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobtel;
+namespace Managon;
 
 use pocketmine\Player;
 use pocketmine\Server;
