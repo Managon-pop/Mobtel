@@ -1,5 +1,5 @@
 name: Mobtel
-main: Mobtel\Mobtel
+main: Managon\Mobtel
 api: 1.13.0
 version: 0.3
 author: Managon
